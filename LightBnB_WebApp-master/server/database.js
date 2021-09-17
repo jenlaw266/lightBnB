@@ -165,7 +165,7 @@ exports.getAllProperties = getAllProperties;
  * @return {Promise<{}>} A promise to the property.
  */
 const addProperty = function (property) {
-  /* return pool
+  return pool
     .query(
       `INSERT INTO properties (owner_id,
       title,
@@ -198,14 +198,14 @@ const addProperty = function (property) {
         property.parking_spaces,
         property.number_of_bathrooms,
         property.number_of_bedrooms,
-        property.active,
+        property.active || true,
       ]
     )
     .then((result) => {
       return result.rows[0];
     })
     .catch((err) => {
-      console.log(err.message);
-    });*/
+      console.log("add property error: ", err.message);
+    });
 };
 exports.addProperty = addProperty;
